@@ -1,0 +1,39 @@
+﻿@model List<CRUDMVC.Context.tbl_Student>
+
+@{
+    ViewBag.Title = "GetAllStudent";
+}
+
+<h2>GetAllStudent</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>NAME</td>
+            <td>FNAME</td>
+            <td>Email</td>
+            <td>Mobile</td>
+            <td>Description</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NAME</td>
+                <td>@item.FNAME</td>
+                <td>@item.EMAIL</td>
+                <td>@item.MOBILE</td>
+                <td>@item.DESCRIPTION</td>
+                <td>
+                    <a href="@Url.Action("Student",new {item.ID,item.FNAME,item.NAME,item.MOBILE,item.EMAIL,item.DESCRIPTION})" class="btn btn-success" />Edit
+                </td>
+                <td>
+                    <a href="@Url.Action("DeleteStudent",new {item.ID})" class="btn btn-danger" /> Delete
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
